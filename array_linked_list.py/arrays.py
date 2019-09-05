@@ -2,9 +2,12 @@
 
 # Do not use any of the built in array functions for this exercise
 class array:
-    def __init__(self):
+    def __init__(self, capacity= 8):
         # Your code here
-        pass
+        # pass
+        self.capacity = capacity
+        self.count = 0
+        self.storage = [None] * self.capacity
 
 
 # Double the size of the given array
@@ -34,13 +37,18 @@ def array_insert():
 
 
 # Add an element to the end of the given array
-def array_append():
+def array_append(self, value):
 
     # Hint, this can be done with one line of code
     # (Without using a built in function)
 
     # Your code here
-    pass
+    # pass
+    if self.count >= self.capacity:
+        print("error: array is full")
+        return
+    self.storage[self.count] = value
+    self.count +=1
 
 
 # Remove the first occurence of the given element from the array
@@ -52,10 +60,17 @@ def array_remove():
 
 # Remove the element in a given position and return it
 # Then shift every element after that occurrance to fill the gap
-def array_pop():
-    # Throw an error if array is out of the current count
-    # Your code here
-    pass
+def array_pop(arr, num):
+        # Throw an error if array is out of the current count
+        # Your code here
+        if arr[num]:
+            value = arr[num]
+            arr.remove(arr[num])
+            return value
+        else :
+            return "error"
+            
+    # pass
 
 
 # Utility to print an array
@@ -71,14 +86,14 @@ def array_print(array):
 
 
 # # Testing
-# arr = array(1)
+arr = array(1)
 
 # array_insert(arr, "STRING1", 0)
 # array_print(arr)
 # array_pop(arr, 0)
 # array_print(arr)
 # array_insert(arr, "STRING1", 0)
-# array_append(arr, "STRING4")
+array_append(arr, "STRING4")
 # array_insert(arr, "STRING2", 1)
 # array_insert(arr, "STRING3", 2)
-# array_print(arr)
+array_print(arr)
